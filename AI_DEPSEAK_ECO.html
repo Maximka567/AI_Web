@@ -1,0 +1,488 @@
+﻿<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EcoLife - Экологичный образ жизни</title>
+    <style>
+        :root {
+            --primary: #2e8b57;
+            --secondary: #3cb371;
+            --light: #f5f5f5;
+            --dark: #333;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--light);
+            color: var(--dark);
+            line-height: 1.6;
+        }
+
+        header {
+            background-color: var(--primary);
+            color: white;
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+            .nav-links li {
+                margin-left: 2rem;
+            }
+
+            .nav-links a {
+                color: white;
+                text-decoration: none;
+                transition: opacity 0.3s;
+            }
+
+                .nav-links a:hover {
+                    opacity: 0.8;
+                }
+
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1466611653911-95081537e5b7');
+            background-size: cover;
+            background-position: center;
+            height: 60vh;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            color: white;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--secondary);
+            color: white;
+            padding: 0.8rem 1.5rem;
+            border: none;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background-color 0.3s;
+            cursor: pointer;
+        }
+
+            .btn:hover {
+                background-color: #2d9960;
+            }
+
+        section {
+            padding: 4rem 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+            color: var(--primary);
+        }
+
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .feature-card {
+            background: white;
+            border-radius: 10px;
+            padding: 2rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+            text-align: center;
+        }
+
+            .feature-card:hover {
+                transform: translateY(-10px);
+            }
+
+        .feature-icon {
+            font-size: 3rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        .calculator {
+            background: white;
+            border-radius: 10px;
+            padding: 2rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+
+        .result {
+            margin-top: 2rem;
+            padding: 1rem;
+            background-color: #f0f8ff;
+            border-radius: 5px;
+            display: none;
+        }
+
+        .newsletter {
+            background-color: var(--primary);
+            color: white;
+            text-align: center;
+            padding: 3rem 0;
+        }
+
+        .newsletter-form {
+            display: flex;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+            .newsletter-form input {
+                flex: 1;
+                padding: 0.8rem;
+                border: none;
+                border-radius: 5px 0 0 5px;
+            }
+
+            .newsletter-form button {
+                padding: 0 1.5rem;
+                background-color: var(--secondary);
+                color: white;
+                border: none;
+                border-radius: 0 5px 5px 0;
+                cursor: pointer;
+            }
+
+        footer {
+            background-color: var(--dark);
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+            margin-top: 2rem;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            margin: 1rem 0;
+        }
+
+            .social-links li {
+                margin: 0 1rem;
+            }
+
+            .social-links a {
+                color: white;
+                font-size: 1.5rem;
+            }
+
+        /* Адаптивность */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .newsletter-form {
+                flex-direction: column;
+            }
+
+                .newsletter-form input,
+                .newsletter-form button {
+                    width: 100%;
+                    border-radius: 5px;
+                }
+
+                .newsletter-form button {
+                    margin-top: 1rem;
+                    padding: 0.8rem;
+                }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">EcoLife</div>
+                <ul class="nav-links">
+                    <li><a href="#about">О нас</a></li>
+                    <li><a href="#tips">Советы</a></li>
+                    <li><a href="#calculator">Калькулятор</a></li>
+                    <li><a href="#contact">Контакты</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Сделаем планету чище вместе</h1>
+            <p>Узнайте, как небольшие изменения в вашей повседневной жизни могут существенно снизить ваш экологический след</p>
+            <a href="#calculator" class="btn">Рассчитать свой след</a>
+        </div>
+    </section>
+
+    <section id="about" class="about">
+        <div class="container">
+            <h2 class="section-title">Почему это важно?</h2>
+            <div class="features">
+                <div class="feature-card">
+                    <div class="feature-icon">🌍</div>
+                    <h3>Изменение климата</h3>
+                    <p>Средняя температура на Земле повышается с беспрецедентной скоростью, что приводит к экстремальным погодным условиям.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🗑️</div>
+                    <h3>Проблема отходов</h3>
+                    <p>Человечество производит более 2 миллиардов тонн отходов ежегодно, большая часть которых не перерабатывается.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">💧</div>
+                    <h3>Дефицит воды</h3>
+                    <p>К 2025 году половина мирового населения может столкнуться с нехваткой пресной воды.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="tips" class="tips">
+        <div class="container">
+            <h2 class="section-title">Эко-советы</h2>
+            <div class="features">
+                <div class="feature-card">
+                    <div class="feature-icon">🛒</div>
+                    <h3>Осознанные покупки</h3>
+                    <p>Покупайте только то, что действительно нужно. Выбирайте товары с минимальной упаковкой или из переработанных материалов.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🚲</div>
+                    <h3>Экотранспорт</h3>
+                    <p>Используйте велосипед, общественный транспорт или ходите пешком вместо автомобиля для коротких поездок.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">💡</div>
+                    <h3>Энергосбережение</h3>
+                    <p>Замените лампы накаливания на светодиодные, выключайте электроприборы из розетки, когда они не используются.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="calculator" class="calculator-section">
+        <div class="container">
+            <h2 class="section-title">Калькулятор углеродного следа</h2>
+            <div class="calculator">
+                <form id="carbon-calculator">
+                    <div class="form-group">
+                        <label for="transport">Как часто вы используете личный автомобиль?</label>
+                        <select id="transport" required>
+                            <option value="">Выберите вариант</option>
+                            <option value="5">Ежедневно</option>
+                            <option value="3">Несколько раз в неделю</option>
+                            <option value="1">Редко</option>
+                            <option value="0">Не использую</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="energy">Какой источник энергии преобладает в вашем доме?</label>
+                        <select id="energy" required>
+                            <option value="">Выберите вариант</option>
+                            <option value="10">Уголь/Газ</option>
+                            <option value="5">Смешанный</option>
+                            <option value="2">Возобновляемые источники</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="diet">Какой у вас тип питания?</label>
+                        <select id="diet" required>
+                            <option value="">Выберите вариант</option>
+                            <option value="10">Много мяса (ежедневно)</option>
+                            <option value="5">Умеренное мясо (3-4 раза в неделю)</option>
+                            <option value="3">Вегетарианское</option>
+                            <option value="1">Веганское</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="waste">Как вы обращаетесь с отходами?</label>
+                        <select id="waste" required>
+                            <option value="">Выберите вариант</option>
+                            <option value="10">Не сортирую</option>
+                            <option value="5">Сортирую иногда</option>
+                            <option value="2">Сортирую регулярно</option>
+                            <option value="0">Сортирую и минимизирую отходы</option>
+                        </select>
+                    </div>
+
+                    <button type="submit" class="btn">Рассчитать</button>
+                </form>
+
+                <div id="result" class="result">
+                    <h3>Ваш результат:</h3>
+                    <p id="score-text"></p>
+                    <p id="advice-text"></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="newsletter" id="contact">
+        <div class="container">
+            <h2>Подпишитесь на нашу рассылку</h2>
+            <p>Получайте свежие советы и новости о экологичном образе жизни</p>
+            <form class="newsletter-form">
+                <input type="email" placeholder="Ваш email" required>
+                <button type="submit">Подписаться</button>
+            </form>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>© 2023 EcoLife. Все права защищены.</p>
+            <ul class="social-links">
+                <li><a href="#">📱</a></li>
+                <li><a href="#">📘</a></li>
+                <li><a href="#">📸</a></li>
+                <li><a href="#">🐦</a></li>
+            </ul>
+            <p>Сайт создан с заботой о природе</p>
+        </div>
+    </footer>
+
+    <script>
+        // Калькулятор углеродного следа
+        document.getElementById('carbon-calculator').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            const transport = parseInt(document.getElementById('transport').value);
+            const energy = parseInt(document.getElementById('energy').value);
+            const diet = parseInt(document.getElementById('diet').value);
+            const waste = parseInt(document.getElementById('waste').value);
+
+            const totalScore = transport + energy + diet + waste;
+
+            let message = '';
+            let advice = '';
+
+            if (totalScore <= 10) {
+                message = 'Отличный результат! Ваш углеродный след очень низкий.';
+                advice = 'Продолжайте в том же духе и вдохновляйте других!';
+            } else if (totalScore <= 20) {
+                message = 'Хороший результат! Ваш углеродный след ниже среднего.';
+                advice = 'Попробуйте уменьшить использование автомобиля или перейти на более растительное питание.';
+            } else if (totalScore <= 30) {
+                message = 'Средний результат. Ваш углеродный след соответствует среднему уровню.';
+                advice = 'Начните сортировать отходы, используйте меньше пластика и чаще выбирайте общественный транспорт.';
+            } else {
+                message = 'Ваш углеродный след выше среднего.';
+                advice = 'Рекомендуем пересмотреть свои привычки: уменьшить потребление мяса, начать сортировать мусор, использовать энергосберегающие технологии.';
+            }
+
+            document.getElementById('score-text').textContent = message;
+            document.getElementById('advice-text').textContent = advice;
+            document.getElementById('result').style.display = 'block';
+
+            // Прокрутка к результатам
+            document.getElementById('result').scrollIntoView({ behavior: 'smooth' });
+        });
+
+        // Простая валидация формы подписки
+        document.querySelector('.newsletter-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const email = this.querySelector('input').value;
+
+            if (email.includes('@') && email.includes('.')) {
+                alert('Спасибо за подписку! Мы отправили вам письмо с подтверждением.');
+                this.querySelector('input').value = '';
+            } else {
+                alert('Пожалуйста, введите корректный email адрес.');
+            }
+        });
+
+        // Плавная прокрутка для навигации
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    targetElement.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
